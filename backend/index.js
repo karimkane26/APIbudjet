@@ -20,7 +20,8 @@ const DepenseModel = mongoose.model('depenses',DepenseSchema)
 //     })
 //     }
 // )
-// Affichage des donnés  Depense
+// ------------------------------------------------------------ Affichage des Depenses -------------------------------------------------------
+
 app.get('/', async (req, res) => {
   const depenses = await DepenseModel.find()
   console.log("depenses ", depenses)
@@ -28,10 +29,6 @@ app.get('/', async (req, res) => {
   });
 // Affichage des données avec id
 app.get("/:id",function(req,res){
-  // fetchid = req.params.id;
-  // DepenseModel.find(({id:fetchid}),function(err,val){
-  //   res.send(val)
-  // })
   DepenseModel.findOne({_id: req.params.id })
       .then(data => res.status(200).json(data))
       .catch(error => res.status(404).json({ error }));
@@ -75,7 +72,7 @@ const RevenuModel = mongoose.model('revenus',revenuSchema)
 console.log("Revenu ", RevenuModel)
 
 // Creation des données 
-// Affichage des revenu 
+// ------------------------------------------------------------Affichage des revenu -------------------------------------------------------
 app.get('/api/revenu', async (req, res) => {
   const Revenu = await RevenuModel.find()
   console.log("Revenu ", Revenu)
